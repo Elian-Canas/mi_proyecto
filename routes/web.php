@@ -1,21 +1,20 @@
 <?php
 
 use Lib\Route;
+use App\Controladores\HomeController;
 
-Route::get('/', function() {
-    echo "Hola desde la pagina principal";
-});
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get("/transaction", function() {
-    echo "Hola desde la pagina de transacciones";
-});
-
-Route::get("/categories", function() {
-    echo "Hola desde la pagina de categorias";
+    return "Hola desde la pagina de transacciones";
 });
 
 Route::get("/dashboard", function() {
-    echo "Hola desde el tablero de transacciones";
+    return "Hola desde el tablero de transacciones";
+});
+
+Route::get('/transaction/:slug', function($slug) {
+    return "Registra tu ultima transacción en $slug";
 });
 
 Route::dispatch();
