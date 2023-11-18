@@ -7,15 +7,14 @@ class HomeController extends Controlador
 {
     public function index()
         {
-            $financeModel = new Transacciones();
 
-            $financeModel->delete(5);
+            return $this->view('home');
 
-            return "ELIMINADO";
-            //   $this->view('home', [
-            //     '' => ''
-            //   ]);
+            // $financeModel = new Transacciones();
 
+            // $financeModel->delete(5);
+
+            // return "ELIMINADO";
              
 
         }

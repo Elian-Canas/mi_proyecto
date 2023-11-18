@@ -45,6 +45,10 @@ class Modelo
         return $this->query->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function sub() 
+    {
+        return $this->query->fetch_object();
+    }
     //Consultas
 
     public function all()
@@ -60,6 +64,20 @@ class Modelo
         //SELECT * FROM transacciones WHERE id = 1
         $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
         return $this->query($sql)->first();
+    }
+
+    public function find_transaccion($id)
+    {
+        //SELECT * FROM transacciones WHERE id = 1
+        $sql = "SELECT * FROM {$this->table} WHERE categoria_id = {$id}";
+        return $this->query($sql)->get();
+    }
+
+    public function find_transacciones($id)
+    {
+        //SELECT * FROM transacciones WHERE id = 1
+        $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
+        return $this->query($sql)->get();
     }
 
     public function where($column, $operator, $value = null) 
