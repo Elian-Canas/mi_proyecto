@@ -73,12 +73,6 @@ class Modelo
         return $this->query($sql)->get();
     }
 
-    public function find_transacciones($id)
-    {
-        //SELECT * FROM transacciones WHERE id = 1
-        $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
-        return $this->query($sql)->get();
-    }
 
     public function where($column, $operator, $value = null) 
     {
