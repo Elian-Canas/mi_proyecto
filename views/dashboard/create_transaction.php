@@ -9,60 +9,66 @@
 </head>
 
 <body>
-    <h1 class="h2 py-3 text-primary-emphasis">Crear Nueva Transacción</h1>
-
-
-    <div class="h2 py-5 text-primary-emphasis">
+    <h1 class="h2 py-3 text-primary-emphasis container text-center">Crear Nueva Transacción</h1>
+    <div class="h2 py-5 text-primary-emphasis container">
         <form class="container text-center" action="/dashboard/<?= $categorias['id'] ?>" method="post">
 
-            <div class="mb-3 ">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Usuario_id</span>
-                    <input type="number" class="form-control" placeholder="" name="usuario_id">
-                    <span class="input-group-text"></span>
+            <div class="row">
+                <div class="col mb-3 ">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Usuario_id</span>
+                        <input type="number" class="form-control" placeholder="" name="usuario_id">
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 ">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Categoria_id</span>
-                    <input type="number" class="form-control" placeholder="" name="categoria_id">
-                    <span class="input-group-text"></span>
+                <div class="col mb-3 ">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Categoria_id</span>
+                        <input type="number" class="form-control" placeholder="" name="categoria_id">
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 ">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Monto</span>
-                    <input type="number" class="form-control" placeholder="$$$" name="monto">
-                    <span class="input-group-text"></span>
+                <div class="col mb-3 ">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Monto</span>
+                        <input type="number" class="form-control" placeholder="$$$" name="monto">
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Fecha</span>
-                    <input type="date" class="form-control" placeholder="fecha" name="fecha">
-                    <span class="input-group-text"></span>
+                <div>
+                    <div class="input-group col mb-3">
+                        <span class="input-group-text">Fecha</span>
+                        <input type="date" class="form-control" placeholder="fecha" name="fecha">
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Tipo</span>
-                    <select class="form-select" aria-label="Default select example" name="tipo">
-                        <option selected>Seleccione el tipo de dato</option>
-                        <option value="ingreso">ingreso</option>
-                        <option value="gasto">gasto</option>
-                    </select>
-                    <span class="input-group-text"></span>
+                <div>
+                    <div class="input-group col mb-3">
+                        <span class="input-group-text">Tipo</span>
+                        <select class="form-select" aria-label="Default select example" name="tipo">
+                            <option selected>Seleccione el tipo de dato</option>
+                            <option value="ingreso">ingreso</option>
+                            <option value="gasto">gasto</option>
+                        </select>
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 ">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">Descripcion</span>
-                    <input type="text" class="form-control" placeholder="Descripcion..." name="descripcion">
-                    <span class="input-group-text"></span>
+                <div class="mb-3 ">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Descripcion</span>
+                        <input type="text" class="form-control" placeholder="Descripcion..." name="descripcion">
+                        <span class="input-group-text"></span>
+                    </div>
                 </div>
+
             </div>
-            <button type="submit" class="btn btn-secondary btn-lg">Ingresar datos</button>
+
+            <a href="/dashboard/<?= $categorias['id'] ?>">
+                <button type="button" class="btn btn-danger btn-lg" aria-label="Close">Volver</button></a>
+            </a>
+            <button type="submit" class="btn btn-secondary btn-lg" name="crear">Ingresar datos</button>
         </form>
+
 
     </div>
 

@@ -59,11 +59,16 @@ class DashboardControlador extends Controlador
     {
         //retornar parametros del formulario
         $datos = $_POST;
+        if (empty($_POST['crear'])) {
+            if (empty($datos)) {
+                echo "UNO DE LOS CAMPOS ESTÁ VACIO";
+            }
 
-        $modelo = new Transacciones;
-        $modelo->create($datos);
+            // $modelo = new Transacciones;
+            // $modelo->create($datos);
 
-        return $this->redirect("/dashboard/{$id}");
+            // return $this->redirect("/dashboard/{$id}");
+        }
     }
     public function edit($id)
     {
@@ -75,7 +80,8 @@ class DashboardControlador extends Controlador
         $transacciones = $modelo->find($id);
 
         // $categorias = $modeloCategorias->find($id);
-        return  $this->view('dashboard.edit', compact('transacciones'));    }
+        return  $this->view('dashboard.edit', compact('transacciones'));
+    }
 
     public function update($id)
     {
@@ -86,7 +92,6 @@ class DashboardControlador extends Controlador
         $modelo->update($id, $datos);
 
         return $this->redirect("/dashboard/{$datos['categoria_id']}");
-
     }
 
     public function destroy($id)

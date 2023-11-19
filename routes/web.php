@@ -5,8 +5,8 @@ use App\Controladores\HomeController;
 use App\Controladores\LoginControlador;
 use App\Controladores\DashboardControlador;
 
-Route::get('/', [HomeController::class, 'index']);
-Route::post('/', [LoginControlador::class, 'login']);
+// Route::get('/', [HomeController::class, 'index']);
+// Route::post('/', [LoginControlador::class, 'login']);
 
 Route::get("/dashboard", [DashboardControlador::class, 'index']);
 Route::get("/dashboard/create_user", [DashboardControlador::class, 'create_user']);

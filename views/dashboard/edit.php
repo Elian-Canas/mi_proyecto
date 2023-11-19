@@ -10,9 +10,8 @@
 
 <body>
 
-    <h1 class="h2 py-3 text-primary-emphasis">Editar Transacción</h1>
-    <a href="/dashboard/<?= $transacciones['categoria_id'] ?>">
-        <button type="button" class="btn-close" aria-label="Close"></button></a>
+    <h1 class="h2 py-3 text-primary-emphasis container text-center">Editar Transacción</h1>
+
 
     <div class="h2 py-5 text-primary-emphasis">
         <form class="container text-center" action="/dashboard/<?= $transacciones['id'] ?>" method="post">
@@ -49,6 +48,7 @@
                 <div class="input-group mb-3">
                     <span class="input-group-text">Tipo</span>
                     <select value="<?= $transacciones['tipo'] ?>" class="form-select" aria-placeholder="Seleccione el tipo de dato" aria-label="Default select example" name="tipo">
+                        <option selected>Seleccione el tipo de dato</option>
                         <option value="ingreso">ingreso</option>
                         <option value="gasto">gasto</option>
                     </select>
@@ -62,6 +62,8 @@
                     <span class="input-group-text"></span>
                 </div>
             </div>
+            <a href="/dashboard/<?= $transacciones['categoria_id'] ?>">
+                <button type="button" class="btn btn-danger btn-lg" aria-label="Close">Volver</button></a>
             <button type="submit" class="btn btn-secondary btn-lg">Actualizar datos</button>
         </form>
 
