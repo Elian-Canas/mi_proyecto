@@ -10,7 +10,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get("/transacciones", [TransaccionesControlador::class, 'show']);
 Route::get("/transacciones/create_transaction", [TransaccionesControlador::class, 'create_transaction']);
-Route::post("/transacciones", [TransaccionesControlador::class, 'store']);
+Route::post("/transacciones/create_transaction", [TransaccionesControlador::class, 'store']);
 
 // Route::get("/transacciones/create_user", [TransaccionesControlador::class, 'create_user']);
 
