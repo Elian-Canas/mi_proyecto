@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -27,14 +27,14 @@
                                 Menu
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="/transacciones/create_transaction">Crear Nueva Transaccion</a></li>
+                                <li><a class="dropdown-item" href="/transacciones/create">Crear Nueva Transaccion</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand"><?= $categorias['nombre'] ?></a>
+                <a class="navbar-brand">Elian Cañas</a>
 
             </div>
         </nav>
@@ -42,7 +42,7 @@
 
         <h2 class="py-3 text-dark-emphasis container text-center">Lista de transacciones</h2>
 
-        <table class="table container text-center">
+        <table class="table table-striped container text-center">
             <thead>
                 <tr>
                     <th scope="col">FECHA</th>
@@ -58,9 +58,9 @@
                 <tbody>
                     <tr>
                         <th scope="row"><?= $transaccion["fecha"] ?></th>
-                        <td><?= $transaccion["descripcion"] ?></td>
+                        <td class="text-capitalize"><?= $transaccion["descripcion"] ?></td>
                         <td><?= $transaccion["monto"] ?></td>
-                        <td><?= $transaccion["tipo"] ?></td>
+                        <td class="text-capitalize"><?= $transaccion["tipo"] ?></td>
                         <td>
                             <a href="/transacciones/<?= $transaccion['id'] ?>/edit">
                                 <button type="submit" name="edit" class="btn btn-outline-warning">
@@ -95,4 +95,4 @@
 
 </body>
 
-</html>
+</html> -->

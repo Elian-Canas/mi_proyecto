@@ -15,35 +15,38 @@
         <div class="panel-heading">
             <h1 class="h2 py-3 text-primary-emphasis container text-center">Crear Nueva Transacción</h1>
         </div>
-        <form class="container text-center" id="create_transaction" action="/transacciones/create_transaction" method="post">
+        <form class="container text-center" id="create" action="/transacciones/create" method="post">
 
             <div class="row">
-                <div class="col mb-3 ">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Categoria_id</span>
-                        <input type="number" class="form-control" placeholder="" id="categoria_id" name="categoria_id">
-                        <span class="input-group-text"></span>
-                    </div>
+                <div class="input-group col mb-3">
+                    <span class="input-group-text">Categoria</span>
+                    <select class="form-select" name="categoria_id">
+                        <option selected>Seleccione una categoria</option>
+                        <?php foreach ($categorias as $categoria) : ?>
+                            <option value= "<?= $categoria['id'] ?>"><?= $categoria["nombre"] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                    <span class="input-group-text"></span>
                 </div>
                 <div class="col">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Monto</span>
-                        <input type="number" class="form-control" placeholder="$$$" id="monto" name="monto">
+                        <input type="number" class="form-control" placeholder="$$$" id="monto" name="monto" required>
                         <span class="input-group-text"></span>
                     </div>
                 </div>
-                <div class="row">
+                <div>
                     <div>
                         <div class="input-group col mb-3">
                             <span class="input-group-text">Fecha</span>
-                            <input type="date" id="fecha" class="form-control" placeholder="fecha" name="fecha">
+                            <input type="date" id="fecha" class="form-control" placeholder="fecha" name="fecha" required>
                             <span class="input-group-text"></span>
                         </div>
                     </div>
                     <div>
                         <div class="input-group col mb-3">
                             <span class="input-group-text">Tipo</span>
-                            <select class="form-select" aria-label="Default select example" name="tipo" id="tipo">
+                            <select class="form-select" name="tipo" id="tipo" required>
                                 <option selected>Seleccione el tipo de dato</option>
                                 <option value="ingreso">ingreso</option>
                                 <option value="gasto">gasto</option>
@@ -64,9 +67,9 @@
             </div>
 
             <a href="/transacciones">
-                <button type="button" class="btn btn-danger btn-lg" aria-label="Close">Volver</button></a>
+                <button type="button" class="btn btn-secondary btn-lg" aria-label="Close">Volver</button></a>
             </a>
-            <button type="submit" id="btnAction" class="btn btn-secondary btn-lg">Ingresar datos</button>
+            <button type="submit" class="btn btn-success btn-lg">Guardar</button>
         </form>
         <script>
             $("#btnAction").on('click', function() {

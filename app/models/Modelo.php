@@ -45,10 +45,7 @@ class Modelo
         return $this->query->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function sub() 
-    {
-        return $this->query->fetch_object();
-    }
+
     //Consultas
 
     public function all()
@@ -66,11 +63,11 @@ class Modelo
         return $this->query($sql)->first();
     }
 
-    public function find_transaccion($id)
+    public function find_category($id)
     {
-        //SELECT * FROM transacciones WHERE id = 1
-        $sql = "SELECT * FROM {$this->table} WHERE categoria_id = {$id}";
-        return $this->query($sql)->get();
+        //SELECT nombre FROM transacciones WHERE id = 1
+        $sql = "SELECT nombre FROM {$this->table} WHERE categoria_id = {$id} INNER JOIN transacciones ON transacciones.categoria_id = categorias.id";
+        return $this->query($sql)->first();
     }
 
 

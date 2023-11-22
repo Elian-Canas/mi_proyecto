@@ -8,14 +8,17 @@ use App\Controladores\TransaccionesControlador;
 Route::get('/', [HomeController::class, 'index']);
 // Route::post('/', [LoginControlador::class, 'login']);
 
-Route::get("/transacciones", [TransaccionesControlador::class, 'show']);
-Route::get("/transacciones/create_transaction", [TransaccionesControlador::class, 'create_transaction']);
-Route::post("/transacciones/create_transaction", [TransaccionesControlador::class, 'store']);
+Route::get("/transacciones", [TransaccionesControlador::class, 'index']);
+Route::get("/transacciones/create", [TransaccionesControlador::class, 'create']);
+Route::post("/transacciones/create", [TransaccionesControlador::class, 'store']);
 
-// Route::get("/transacciones/create_user", [TransaccionesControlador::class, 'create_user']);
+Route::get("/dashboard", [TransaccionesControlador::class, 'index_dashboard']);
 
-// Route::get('/transacciones/:id', [TransaccionesControlador::class, 'show']);
-Route::post("/transacciones/:id", [TransaccionesControlador::class, 'store_transaction']);
+Route::get("/categorias", [TransaccionesControlador::class, 'index_category']);
+Route::post("/categorias", [TransaccionesControlador::class, 'store_category']);
+
+Route::get("/transacciones/create_category", [TransaccionesControlador::class, 'create_category']);
+
 Route::get("/transacciones/:id/edit", [TransaccionesControlador::class, 'edit']);
 Route::post("/transacciones/:id/", [TransaccionesControlador::class, 'update']);
 Route::post("/transacciones/:id/delete", [TransaccionesControlador::class, 'destroy']);

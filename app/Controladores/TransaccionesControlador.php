@@ -10,22 +10,51 @@ class TransaccionesControlador extends Controlador
 {
     public function index()
     {
-        $modelo = new Categorias;
-        $nombres = $modelo->all();
+        $modelo = new Transacciones;
+        //$modeloCategorias = new Categorias;
 
-        return $this->view('transacciones.index', compact('nombres'));
+        $transacciones = $modelo->all();
+        // $categorias = $modeloCategorias->find_category("categoria_id");
+
+
+        return  $this->view('transacciones.index', compact('transacciones'));
+    }
+    public function create()
+    {
+        $modelo = new Categorias;
+
+        $categorias = $modelo->all();
+
+
+        return $this->view('transacciones.create', compact('categorias'));
     }
 
-    public function create_user()
+
+    public function edit($id)
     {
-        return $this->view('transacciones.create_user');
+
+        $modelo = new Transacciones;
+        $modeloCategorias = new Categorias;
+        $transacciones = $modelo->find($id);
+        $categorias = $modeloCategorias->all();
+
+
+        return  $this->view('transacciones.edit', compact('transacciones', 'categorias'));
+    }
+
+    public function create_category()
+    {
+        $modelo = new Categorias;
+
+        $categorias = $modelo->all();
+        return $this->view('transacciones.create_category', compact('categorias'));
     }
 
     public function store()
     {
         // retornar parametros del formulario
         if (($_POST['monto'] === "" || $_POST['fecha'] === "" || $_POST['descripcion'] === "" || $_POST['tipo'] === "")) {
-            return $this->view('transacciones.create_transaction');
+            return $this->view('transacciones.create');
         } else {
             $datos = $_POST;
             $modelo = new Transacciones;
@@ -34,68 +63,51 @@ class TransaccionesControlador extends Controlador
             return $this->redirect("/transacciones");
         }
     }
-        // print_r($datos);
-        // return;
-        // if (empty($_POST['crear'])) {
-        //     if (empty($datos)) {
-        //         echo "UNO DE LOS CAMPOS ESTÁ VACIO";
-        //     } else {
-        //     }
 
-        // return $this->redirect('/transacciones');
-    
-
-
-    public function show()
+    public function index_category()
     {
-        $modelo = new Transacciones;
-        $modeloCategorias = new Categorias;
-        $id = 10;
-        $categorias = $modeloCategorias->find($id);
+        $modelo = new Categorias;
 
-        $transacciones = $modelo->find_transaccion($id);
-
-        return  $this->view('transacciones.show', compact('transacciones', 'categorias'));
+        $categorias = $modelo->all();
+        return $this->view('transacciones.index_category', compact('categorias'));
     }
 
-    public function create_transaction()
+    public function index_dashboard()
     {
-        $id = 10;
-        $modeloCategorias = new Categorias;
+        $modelo = new Categorias;
 
-        $categorias = $modeloCategorias->find($id);
-
-
-        return $this->view('transacciones.create_transaction', compact('categorias'));
+        $categorias = $modelo->all();
+        return $this->view('transacciones.dashboard', compact('categorias'));
     }
 
-    public function store_transaction($id)
+    // public function show()
+    // {
+    //     $modelo = new Transacciones;
+    //     // $modeloCategorias = new Categorias;
+    //     // $categorias = $modeloCategorias->all();
+
+    //     $transacciones = $modelo->all();
+
+    //     return  $this->view('transacciones.show', compact('transacciones'));
+    // }
+
+
+
+    public function store_category()
     {
         //retornar parametros del formulario
         $datos = $_POST;
-        if (empty($_POST['crear'])) {
-            if (empty($datos)) {
-                echo "UNO DE LOS CAMPOS ESTÁ VACIO";
-            }
+        if (($_POST['nombre'] === "")) {
+            return $this->view('transacciones.create_category');
+        } else {
+            $datos = $_POST;
+            $modelo = new Categorias;
+            $modelo->create($datos);
 
-            // $modelo = new Transacciones;
-            // $modelo->create($datos);
-
-            // return $this->redirect("/transacciones/{$id}");
+            return $this->redirect("/transacciones");
         }
     }
-    public function edit($id)
-    {
 
-        $modelo = new Transacciones;
-        $modeloCategorias = new Categorias;
-
-
-        $transacciones = $modelo->find($id);
-
-        // $categorias = $modeloCategorias->find($id);
-        return  $this->view('transacciones.edit', compact('transacciones'));
-    }
 
     public function update($id)
     {
@@ -104,8 +116,8 @@ class TransaccionesControlador extends Controlador
         $modelo = new Transacciones;
 
         $modelo->update($id, $datos);
-
-        return $this->redirect("/transacciones/{$datos['categoria_id']}");
+        print_r($modelo);
+        return $this->redirect("/transacciones");
     }
 
     public function destroy($id)
@@ -115,6 +127,6 @@ class TransaccionesControlador extends Controlador
 
         $modelo->delete($id);
 
-        return $this->redirect("/transacciones/{$transacciones['categoria_id']}");
+        return $this->redirect("/transacciones");
     }
 }
