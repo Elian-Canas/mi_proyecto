@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Pantalla de transacciones</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,25 +14,18 @@
 <body>
     <div>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/dashboard">Control de Finanzas</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <!-- <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Menu
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="/transacciones/create">Crear Nueva Transaccion</a></li>
-                                <li><a class="dropdown-item" href="/transacciones/create_category">Crear Categoria</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul> -->
-                            <a class="navbar-brand" href="/transacciones/create">Nueva Transacción</a>
                             <a class="navbar-brand" href="/categorias">Categorias</a>
 
 
@@ -44,9 +38,18 @@
         </nav>
 
 
-        <h2 class="py-3 text-dark-emphasis container text-center">Lista de transacciones</h2>
+        <div class="container">
+            <div class="row">
+                <h2 class="py-3 text-dark-emphasis col-md-8 container text-center">Lista de transacciones</h2>
+                <a href="/transacciones/create" class="col md-4 py-3">
+                    <button class="btn btn-outline-success">
+                        Crear Transaccion
+                    </button>
+                </a>
+            </div>
+        </div>
 
-        <table class="table table-striped container text-center">
+        <table class="table table-striped table-responsive container text-center col-xs-1">
             <thead>
                 <tr>
                     <th scope="col">FECHA</th>
@@ -58,19 +61,25 @@
                     <th scope="col">ELIMINAR</th>
                 </tr>
             </thead>
-            <?php foreach ($transacciones as $transaccion) : ?>
+            <?php foreach ($transacciones as $transaccion): ?>
 
                 <tbody>
                     <tr>
-                        <th scope="row"><?= $transaccion["fecha"] ?></th>
-                        <th scope="row" value="<?= $transaccion["categoria_id"] ?>">
-                            <!-- <?= $categorias["nombre"] ?> -->
-                            <?= $transaccion["categoria_id"] ?>
-
+                        <th scope="row">
+                            <?= $transaccion["fecha"] ?>
                         </th>
-                        <td class="text-capitalize"><?= $transaccion["descripcion"] ?></td>
-                        <td><?= $transaccion["monto"] ?></td>
-                        <td class="text-capitalize"><?= $transaccion["tipo"] ?></td>
+                        <th scope="row">
+                            <?= $transaccion["categoria"] ?>
+                        </th>
+                        <td class="text-capitalize">
+                            <?= $transaccion["descripcion"] ?>
+                        </td>
+                        <th>
+                            <?= $transaccion["monto"] ?>
+                        </th>
+                        <td class="text-capitalize">
+                            <?= $transaccion["tipo"] ?>
+                        </td>
                         <td>
                             <a href="/transacciones/<?= $transaccion['id'] ?>/edit">
                                 <button type="submit" name="edit" class="btn btn-outline-warning">
@@ -100,7 +109,9 @@
     </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>

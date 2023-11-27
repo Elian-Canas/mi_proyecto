@@ -11,7 +11,7 @@
 <body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <div class="h2 py-5 text-primary-emphasis container">
+    <div class="h2 py-5 text-primary-emphasis container-sm">
         <div class="panel-heading">
             <h1 class="h2 py-3 text-primary-emphasis container text-center">Crear Nueva Transacción</h1>
         </div>

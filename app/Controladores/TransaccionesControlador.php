@@ -11,11 +11,7 @@ class TransaccionesControlador extends Controlador
     public function index()
     {
         $modelo = new Transacciones;
-        //$modeloCategorias = new Categorias;
-
         $transacciones = $modelo->all();
-        // $categorias = $modeloCategorias->find_category("categoria_id");
-
 
         return  $this->view('transacciones.index', compact('transacciones'));
     }
@@ -74,10 +70,11 @@ class TransaccionesControlador extends Controlador
 
     public function index_dashboard()
     {
-        $modelo = new Categorias;
-
-        $categorias = $modelo->all();
-        return $this->view('transacciones.dashboard', compact('categorias'));
+        $modelo = new Transacciones;
+        $ingresos = $modelo->ingreso();
+        $gastos = $modelo->gasto();
+        $grafica = $modelo->grafica();
+        return $this->view('transacciones.index_dashboard', compact('grafica', 'ingresos','gastos'));
     }
 
     // public function show()

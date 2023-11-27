@@ -65,8 +65,8 @@
     </div>
     <div class="container text-center">
         <a href="/transacciones">
-            <button type="button" class="btn btn-danger btn-lg" aria-label="Close">Volver</button></a>
-        <button type="submit" class="btn btn-secondary btn-lg">Actualizar datos</button>
+            <button type="button" class="btn btn-secondary btn-lg" aria-label="Close">Volver</button></a>
+        <button type="submit" class="btn btn-success btn-lg">Actualizar datos</button>
         </form>
     </div>
     </div>

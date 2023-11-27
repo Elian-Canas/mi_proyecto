@@ -63,11 +63,29 @@ class Modelo
         return $this->query($sql)->first();
     }
 
-    public function find_category($id)
+    public function ingreso()
     {
-        //SELECT nombre FROM transacciones WHERE id = 1
-        $sql = "SELECT nombre FROM {$this->table} WHERE categoria_id = {$id} INNER JOIN transacciones ON transacciones.categoria_id = categorias.id";
-        return $this->query($sql)->first();
+        //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
+        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'ingreso' ORDER BY `t`.`fecha` DESC;
+        ";
+        return $this->query($sql)->get();
+    }
+
+    public function gasto()
+    {
+        //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
+        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'gasto' ORDER BY `t`.`fecha` DESC;
+        ";
+        return $this->query($sql)->get();
+    }
+
+    public function grafica()
+    {
+        //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
+        $sql = "SELECT c.nombre AS categoria, SUM(monto) AS porcentaje FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE c.nombre <> 'ingresos' GROUP BY C.nombre;
+        ;
+        ";
+        return $this->query($sql)->get();
     }
 
 
