@@ -17,7 +17,7 @@
 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/transacciones">Control de Finanzas</a>
+                <a class="navbar-brand" href="/transacciones/<?=$id ?>">Control de Finanzas</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
@@ -27,22 +27,11 @@
                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <!-- <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Menu
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="/transacciones/create">Crear Nueva Transaccion</a></li>
-                                <li><a class="dropdown-item" href="/transacciones/create_category">Crear Categoria</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul> -->
-                            <!-- <a class="navbar-brand" href="/transacciones/create">Nueva Transacción</a> -->
-                            <!-- <a class="navbar-brand" href="/categorias">Categorias</a> -->
-
 
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand">Elian Cañas</a>
+                <a class="navbar-brand"><?= $nombre . " " . $apellido?></a>
 
             </div>
         </nav>

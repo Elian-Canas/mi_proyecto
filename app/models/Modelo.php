@@ -63,26 +63,33 @@ class Modelo
         return $this->query($sql)->first();
     }
 
-    public function ingreso()
+    public function login($usuario, $clave)
+    {
+        //SELECT * FROM transacciones WHERE id = 1
+        $sql = "SELECT * FROM {$this->table} WHERE usuario = '{$usuario}' AND clave = '{$clave}'";
+        return $this->query($sql)->first();
+    }
+
+    public function ingreso($id)
     {
         //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
-        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'ingreso' ORDER BY `t`.`fecha` DESC;
+        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'ingreso' AND login_id = {$id} ORDER BY `t`.`fecha` DESC;
         ";
         return $this->query($sql)->get();
     }
 
-    public function gasto()
+    public function gasto($id)
     {
         //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
-        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'gasto' ORDER BY `t`.`fecha` DESC;
+        $sql = "SELECT t.*,c.nombre AS categoria FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE t.tipo = 'gasto' AND login_id = {$id} ORDER BY `t`.`fecha` DESC;
         ";
         return $this->query($sql)->get();
     }
 
-    public function grafica()
+    public function grafica($id)
     {
         //SELECT nombre FROM categorias INNER JOIN transacciones ON categorias.id = transacciones.categoria_id
-        $sql = "SELECT c.nombre AS categoria, SUM(monto) AS porcentaje FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE c.nombre <> 'ingresos' GROUP BY C.nombre;
+        $sql = "SELECT c.nombre AS categoria, SUM(monto) AS porcentaje FROM transacciones t LEFT JOIN categorias c ON t.categoria_id = c.id WHERE c.nombre <> 'ingresos' AND login_id = {$id} GROUP BY C.nombre;
         ;
         ";
         return $this->query($sql)->get();
@@ -105,7 +112,26 @@ class Modelo
         return $this;
     }
 
-    public function create($data) 
+    public function create($data, $id) 
+    {
+        // INSERT INTO transacciones (id, categoria_id, monto, fecha, tipo, descripcion) VALUES ('', '', '', '', '', '')
+        $columns = array_keys($data);
+        $columns = implode(', ', $columns);
+        // $login_id= "login_id";
+        // $columns = array_push($columns, $login_id);
+
+        $values = array_values($data);
+        $values = "'" . implode("', '", $values). "'";
+
+        $sql = "INSERT INTO {$this->table} ({$columns}, login_id) VALUES ({$values}, '$id')";
+
+        $this->query($sql);
+
+        $insert_id = $this->connection->insert_id;
+        return $this->find($insert_id);
+    }
+
+    public function create_category($data) 
     {
         // INSERT INTO transacciones (id, categoria_id, monto, fecha, tipo, descripcion) VALUES ('', '', '', '', '', '')
         $columns = array_keys($data);

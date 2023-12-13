@@ -16,23 +16,42 @@
 
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/dashboard">Control de Finanzas</a>
+                <a class="navbar-brand" href="/dashboard/<?= $id ?>">Control de Finanzas</a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler col" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <div class="collapse navbar-collapse col" id="navbarNavDarkDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="navbar-brand" href="/categorias">Categorias</a>
-
-
                         </li>
                     </ul>
                 </div>
-                <a class="navbar-brand">Elian Cañas</a>
+
+
+
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown position relative end-50">
+
+                            <button class="btn btn-dark dropdown-toggle " data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <a class="navbar-brand">
+                                    <?php
+                                    echo $resultado['nombres'] . " " . $resultado['apellidos'];
+                                    ?>
+                                </a>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="/">Cerrar Sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </button class="dropdown-menu-end">
+                </div>
 
             </div>
         </nav>
@@ -41,7 +60,7 @@
         <div class="container">
             <div class="row">
                 <h2 class="py-3 text-dark-emphasis col-md-8 container text-center">Lista de transacciones</h2>
-                <a href="/transacciones/create" class="col md-4 py-3">
+                <a href="/transacciones/<?= $resultado['id'] ?>/create" class="col md-4 py-3">
                     <button class="btn btn-outline-success">
                         Crear Transaccion
                     </button>

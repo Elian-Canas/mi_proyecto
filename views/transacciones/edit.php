@@ -17,7 +17,7 @@
             <h1 class="h2 py-3 text-primary-emphasis container text-center">Editar Transacción</h1>
 
         </div>
-        <form class="container text-center" action="/transacciones/<?= $transacciones['id'] ?>" method="post">
+        <form class="container text-center" action="/transacciones/<?= $transacciones['id'] ?>/edit" method="post">
 
             <div class="row">
             <div class="input-group col mb-3">
@@ -64,7 +64,7 @@
             </div>
     </div>
     <div class="container text-center">
-        <a href="/transacciones">
+        <a href="/transacciones/<?= $id ?>">
             <button type="button" class="btn btn-secondary btn-lg" aria-label="Close">Volver</button></a>
         <button type="submit" class="btn btn-success btn-lg">Actualizar datos</button>
         </form>

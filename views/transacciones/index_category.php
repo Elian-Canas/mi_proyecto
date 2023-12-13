@@ -18,7 +18,7 @@
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">Lista de Categorias</a>
                     <!-- <h2 class="py-3 text-dark-emphasis container text-center">Lista de categorias</h2> -->
-                    <a class="navbar-brand" href="/transacciones/create_category">Crear</a>
+                    <!-- <a class="navbar-brand" href="/transacciones/create_category">Crear</a> -->
                 </div>
             </nav>
         </div>
@@ -41,14 +41,14 @@
 
 
                             <td>
-                                <a href="/transacciones/<?= $transaccion['id'] ?>/edit">
+                                <a href="/categorias/<?=$categoria['id']?>/edit">
                                     <button type="submit" name="edit" class="btn btn-outline-warning">
                                         <i class="bi bi-pencil-square"></i>
                                     </button>
                                 </a>
                             </td>
                             <td>
-                                <form action="/transacciones/<?= $transaccion['id'] ?>/delete" method="post">
+                                <form action="/categorias/<?=$categoria['id']?>/delete" method="post">
                                     <button type="submit" class="btn btn-outline-danger">
                                         <i class="bi bi-trash3"></i>
                                     </button>
@@ -63,7 +63,7 @@
 
 
             <div class="container-sm position-center">
-                <a href="/transacciones">
+                <a href="/transacciones/<?=$id ?>">
                     <button type="button" class="btn btn-secondary btn-lg" aria-label="Close">Volver</button></a>
                 </a>
                 <a href="/transacciones/create_category">

@@ -15,7 +15,7 @@
         <div class="panel-heading">
             <h1 class="h2 py-3 text-primary-emphasis container text-center">Crear Nueva Transacción</h1>
         </div>
-        <form class="container text-center" id="create" action="/transacciones/create" method="post">
+        <form class="container text-center" id="create" action="/transacciones/<?=$resultado['id']?>/create" method="post">
 
             <div class="row">
                 <div class="input-group col mb-3">
@@ -66,7 +66,7 @@
 
             </div>
 
-            <a href="/transacciones">
+            <a href="/transacciones/<?=$resultado['id']?>">
                 <button type="button" class="btn btn-secondary btn-lg" aria-label="Close">Volver</button></a>
             </a>
             <button type="submit" class="btn btn-success btn-lg">Guardar</button>
